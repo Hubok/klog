@@ -26,7 +26,7 @@
 
 //#include <QDebug>
 
-#include "setuppages/setuppagedxcluster.h"
+#include "setuppagedxcluster.h"
 
 
 SetupPageDxCluster::SetupPageDxCluster(QWidget *parent)  : QWidget(parent)
@@ -462,7 +462,7 @@ void SetupPageDxCluster::setShowVHFQCheckbox(const QString t)
 }
 
 void SetupPageDxCluster::setShowWARCQCheckbox(const QString t)
-{    
+{
     if ( (t.toUpper()) == "FALSE")
     {
         showWARCQCheckbox->setChecked(false);
@@ -536,7 +536,7 @@ void SetupPageDxCluster::setShowWWVQCheckbox(const QString t)
 }
 
 void SetupPageDxCluster::setShowWCYQCheckbox(const QString t)
-{    
+{
     if ( (t.toUpper()) == "FALSE")
     {
         showWCYQCheckbox->setChecked(false);

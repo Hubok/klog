@@ -26,7 +26,7 @@
 
 //#include <QDebug>
 
-#include "setuppages/setuppagesubdivisions.h"
+#include "setuppagesubdivisions.h"
 
 
 SetupPageSubdivisions::SetupPageSubdivisions(DataProxy_SQLite *dp, QWidget *parent) : QWidget(parent){
@@ -103,7 +103,7 @@ void SetupPageSubdivisions::slotEditButtonClicked()
     newLog->setOperators(dataProxy->getOperatorsFromLog(selectedLog));
     newLog->setComment(dataProxy->getCommentsFromLog(selectedLog));
     newLog->setDateString(dataProxy->getLogDateFromLog(selectedLog));
-    //newLog->setTypeN(dataProxy->getLogTypeNFromLog(selectedLog).toInt());    
+    //newLog->setTypeN(dataProxy->getLogTypeNFromLog(selectedLog).toInt());
     int result = newLog->exec();
     if (result == QDialog::Accepted)
     {

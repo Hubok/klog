@@ -28,8 +28,8 @@
 //
 // This class implements the Dialog to add a new satellite
 //
-#include "dataproxy_sqlite.h"
-#include "utilities.h"
+#include "../dataproxy_sqlite.h"
+#include "../utilities.h"
 #include <QDialog>
 #include <QtWidgets>
 #include <QSqlQuery>

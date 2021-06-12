@@ -150,7 +150,7 @@ void MainQSOEntryWidget::setCleaning (const bool _c)
 
 void MainQSOEntryWidget::slotQRZTextChanged()
 {
-    //qDebug()<< "MainQSOEntryWidget::slotQRZTextChanged: " << qrzLineEdit->text() << " / Length: " << QString::number((qrzLineEdit->text()).size()) << "###### START ######" << endl;
+    qDebug()<< "MainQSOEntryWidget::slotQRZTextChanged: " << qrzLineEdit->text() << " / Length: " << QString::number((qrzLineEdit->text()).size()) << "###### START ######" << endl;
     emit debugLog(Q_FUNC_INFO, "Start", Debug);
 
     if ((qrzLineEdit->text()).length()<1)
@@ -202,12 +202,12 @@ void MainQSOEntryWidget::slotQRZTextChanged()
     {
         qrzLineEdit->setPalette(palRed);
         //emit showInfoLabel(tr("Callsign not valid"));
-        //qDebug()<< "MainQSOEntryWidget::slotQRZTextChanged: QRZ not valid - Red" << endl;
+        qDebug()<< "MainQSOEntryWidget::slotQRZTextChanged: QRZ not valid - Red" << endl;
         emit debugLog(Q_FUNC_INFO, "END-4", Debug);
     }
     else
     {
-        //qDebug()<< "MainQSOEntryWidget::slotQRZTextChanged: QRZ is valid - Black" << endl;
+        qDebug()<< "MainQSOEntryWidget::slotQRZTextChanged: QRZ is valid - Black" << endl;
         qrzLineEdit->setPalette(palBlack);
         currentQrz = qrzLineEdit->text();
         //emit showInfoLabel(tr(""));
@@ -267,7 +267,7 @@ void MainQSOEntryWidget::slotQRZTextChanged()
     }
 
     currentQrz = qrzLineEdit->text();
-    //qDebug() << "MainQSOEntryWidget::slotQRZTextChanged: Emitting: " << currentQrz << endl;
+    qDebug() << "MainQSOEntryWidget::slotQRZTextChanged: Emitting: " << currentQrz << endl;
     emit currentQRZSignal(currentQrz);
 
     qrzSmallModDontCalculate = false; // If the text has not been modified in this method
@@ -498,7 +498,7 @@ bool MainQSOEntryWidget::setFreq(const double _f, bool isRX)
         return setBand(_newBand);
 
     }
-	return false;
+    return false;
 }
 
 bool MainQSOEntryWidget::newBandNeededForFreq(const double _f)
@@ -731,7 +731,7 @@ void MainQSOEntryWidget::setModify(const bool _modify)
 
 void MainQSOEntryWidget::slotUpdateTime()
 {
-    //qDebug()<< "MainQSOEntryWidget::slotUpdateTime" << endl;
+    qDebug() << Q_FUNC_INFO;
     //emit debugLog(Q_FUNC_INFO, "Start", Debug);
 
     if ( (!modify) && (realtimeCheckBox->isChecked())  )
@@ -745,6 +745,7 @@ void MainQSOEntryWidget::slotUpdateTime()
 
 void MainQSOEntryWidget::setDateAndTimeInternally()
 {
+    qDebug() << Q_FUNC_INFO;
     if (UTCTime)
     {
         dateEdit->setDate(QDateTime::currentDateTime().toUTC().date());
@@ -900,8 +901,10 @@ void MainQSOEntryWidget::checkIfDupe(const QString &_func)
 
 void MainQSOEntryWidget::slotStartDelayInputTimer()
 {
+    qDebug() << Q_FUNC_INFO << ": " << qrzLineEdit->text ();
     if (qrzLineEdit->text ().length ()<1)
     {
+        qDebug() << Q_FUNC_INFO << " <1 ";
         slotClearButtonClicked ();
         return;
     }
@@ -910,10 +913,14 @@ void MainQSOEntryWidget::slotStartDelayInputTimer()
     qrzLineEdit->setText (aux.toUpper());
     qrzLineEdit->setCursorPosition (cursor);
     delayInputTimer->start(300);
+    //slotDelayInputTimedOut();
+
+    qDebug() << Q_FUNC_INFO << ": timer started";
 }
 
 void MainQSOEntryWidget::slotDelayInputTimedOut()
 {
+    qDebug() << Q_FUNC_INFO << ": timer timed-out";
     delayInputTimer->stop();
     QString text = qrzLineEdit->text();
     if( text != lastQrz)

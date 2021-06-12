@@ -37,18 +37,13 @@
 #include <QUrl>
 
 //#include "database.h"
+#include "world.h"
 #include "setupdialog.h"
 #include "setuppages/setuppagemisc.h"
-//#include "helpaboutdialog.h"
 #include "aboutdialog.h"
-//#include "dxccsummarydialog.h"
 #include "tipsdialog.h"
-#include "world.h"
 #include "filemanager.h"
 #include "fileawardmanager.h"
-//#include "contest.h"
-//#include "contest_cqwwdxssb.h"
-#include "dataproxy_sqlite.h"
 #include "dataproxy_sqlite.h"
 #include "locator.h"
 #include "dxcluster.h"
@@ -77,16 +72,12 @@
 #include "updatesatsdata.h"
 #include "hamlibclass.h"
 #include "elogqrzlog.h"
-//#include "pstrotatorsupport.h"
 #include "lotwutilities.h"
 #include "eqslutilities.h"
 #include "widgets/adiflotwexportwidget.h"
 #include "widgets/showadifimportwidget.h"
-//#include "widgets/advancedsearch/advancedsearchwidget.h"
-//#include "worldmapwidget.h"
 #include "widgets/showkloglogwidget.h"
 #include "qso.h"
-
 
 class QTimer;
 class QDateTime;
@@ -143,6 +134,7 @@ enum
 
 class MainWindow : public  QMainWindow
 {
+
     Q_OBJECT
 
 public:

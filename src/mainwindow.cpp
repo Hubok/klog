@@ -935,6 +935,7 @@ void MainWindow::slotQRZReturnPressed()
                 query.finish();
                   //qDebug() << "MainWindow::slotQRZReturnPressed: Query ERROR: (queryString): " << queryString << endl;
                 errorCode = query.lastError().number();
+
                 QMessageBox msgBox;
                 msgBox.setWindowTitle(tr("KLog - Unexpected error"));
                 msgBox.setIcon(QMessageBox::Warning);
@@ -959,7 +960,7 @@ void MainWindow::slotQRZReturnPressed()
                 query.finish();
                 //TODO: To move the following lines to this part to properly manage the query result!!
                 //ret = true;
-                  //qDebug() << "MainWindow::slotQRZReturnPressed: QSO Added! " << endl;
+                qDebug() << "MainWindow::slotQRZReturnPressed: QSO Added! " << endl;
                 actionsJustAfterAddingOneQSO();
                 slotClearButtonClicked();
             }
@@ -3373,7 +3374,7 @@ void MainWindow::exitQuestion()
 
 void MainWindow::slotQRZTextChanged(QString _qrz)
 {
-    //qDebug()<< "MainWindow::slotQRZTextChanged: " << _qrz << endl;
+    qDebug()<< "MainWindow::slotQRZTextChanged: " << _qrz << endl;
 
     logEvent(Q_FUNC_INFO, "Start", logSeverity);
     if (_qrz.length()<1)
@@ -3385,7 +3386,7 @@ void MainWindow::slotQRZTextChanged(QString _qrz)
         logEvent(Q_FUNC_INFO, "END-1", logSeverity);
         return;
     }
-    //qDebug()<< "MainWindow::slotQRZTextChanged: cursor position: " << endl;
+    qDebug()<< "MainWindow::slotQRZTextChanged: cursor position: " << endl;
 
     if (cleaning)
     {
@@ -3399,7 +3400,7 @@ void MainWindow::slotQRZTextChanged(QString _qrz)
         return;
     }
 
-    //qDebug()<< "MainWindow::slotQRZTextChanged: checking for modify or length<1" << endl;
+    qDebug()<< "MainWindow::slotQRZTextChanged: checking for modify or length<1" << endl;
     if (qrzSmallModDontCalculate)
     //if ((modify) || ((qrzLineEdit->text()).length() < 1) || (qrzSmallModDontCalculate))
     {
@@ -3409,7 +3410,7 @@ void MainWindow::slotQRZTextChanged(QString _qrz)
         return;
     }
 
-    //qDebug()<< "MainWindow::slotQRZTextChanged: running ..." << endl;
+    qDebug()<< "MainWindow::slotQRZTextChanged: running ..." << endl;
     qrzSmallModDontCalculate = true; // A kind of flag to prevent multiple calls to this method.
     //int i;
     int dx_CQz = -1;
@@ -3417,9 +3418,9 @@ void MainWindow::slotQRZTextChanged(QString _qrz)
     int dx_ITUz = -1;
     int dxE_ITUz = -1;
     cleanQRZCOMreceivedDataFromUI();
-    //qDebug() << "MainWindow::slotQRZTextChanged: currentQRZ: " <<_qrz << endl;
+    qDebug() << "MainWindow::slotQRZTextChanged: currentQRZ: " <<_qrz << endl;
     QString pref = util->getPrefixFromCall(_qrz);
-    //qDebug() << "MainWindow::slotQRZTextChanged: pref: " << pref << endl;
+    qDebug() << "MainWindow::slotQRZTextChanged: pref: " << pref << endl;
 
     if (pref.length ()>0)
     {
@@ -3458,7 +3459,7 @@ void MainWindow::slotQRZTextChanged(QString _qrz)
     QStringList _qs; //for the showStatusOfDXCC(const QStringList _qs)
     _qs.clear();
     _qs << QString::number(currentEntity) << QString::number(currentBand) << QString::number(currentMode) << QString::number(currentLog);
-    //qDebug() << "MainWindow::slotQRZTextChanged: currentEntity: " << QString::number(currentEntity) << endl;
+    qDebug() << "MainWindow::slotQRZTextChanged: currentEntity: " << QString::number(currentEntity) << endl;
     if ( locator->isValidLocator(QSOTabWidget->getDXLocator()))
     {
         dxLocator = QSOTabWidget->getDXLocator();
